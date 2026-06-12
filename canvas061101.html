@@ -30,6 +30,8 @@
             font-size: 20px;
             cursor: pointer;
             border: none;
+            font-weight: bold;
+            background-color: rgb(245, 243, 132);
         }
         #startBtn{
             display: block;
@@ -44,7 +46,7 @@
             justify-content: center;
             align-items: center;
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 60px;
         }
         #easy, #normal, #hard{
             padding: 5px 20px;
@@ -52,6 +54,7 @@
             border: none;
             display: none;
             cursor: pointer;
+            font-weight: bold;
         }
         #easy{
             background-color: rgb(141, 237, 100);
@@ -288,16 +291,21 @@
             ctx.beginPath()
             ctx.fillStyle = "gold"
             ctx.arc(ballX, ballY, ballR, 0, Math.PI * 2)
+            ctx.shadowBlur = 10
+            ctx.shadowColor = "rgba(255, 245, 61, 0.8)"
             ctx.fill()
 
             // 바
             ctx.beginPath()
+            ctx.shadowColor = "rgba(73, 250, 242, 0.8)"
             ctx.fillStyle = "skyblue"
             ctx.fillRect(barX, barY, barW, barH)
 
             // 벽돌
             for(let i = 0; i < bricks.length; i++){
                 if(bricks[i].show){
+                    ctx.shadowBlur = 25
+                    ctx.shadowColor = "rgba(249, 79, 41, 0.8)"
                     ctx.fillStyle = "tomato"
                     ctx.fillRect(bricks[i].x, bricks[i].y, bricksW, bricksH)
                 }
@@ -306,6 +314,7 @@
 
         // 게임종료
         function endGame(){
+            ctx.beginPath()
             gameOver = true
             cancelAnimationFrame(aniId)
             ctx.fillStyle = "rgba(0, 0, 0, 0.6)"
@@ -324,6 +333,7 @@
         })
 
         function winGame(){
+            ctx.beginPath()
             gameOver = true
             cancelAnimationFrame(aniId)
             ctx.fillStyle = "rgba(0, 0, 0, 0.6)"
