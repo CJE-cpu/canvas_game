@@ -16,9 +16,11 @@
             height: 100vh;
         }
         canvas{
-            border: 4px solid white;
+            border-radius: 10px;
+            border: 4px solid rgb(255, 255, 255);
             background-color: #111;
             margin: 0 auto;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
         }
         #startBtn, #restartBtn{
             position: absolute;
@@ -153,7 +155,8 @@
 
         function modeSelect(){
             cancelAnimationFrame(aniId)
-            ctx.fillStyle = "rgba(0, 0, 0, 0.6)"
+            ctx.shadowColor = "rgba(0, 0, 0, 0)"
+            ctx.fillStyle = "rgb(0, 0, 0)"
             ctx.fillRect(0, 0, canvas.width, canvas.height)
 
             ctx.fillStyle = "white"
@@ -168,6 +171,8 @@
             hard.style.display = "block"
         }
         function easyMode(){
+            canvas.style.border = "4px solid rgb(198, 255, 170)"
+            canvas.style.boxShadow = "0 0 15px rgba(141, 237, 100, 0.8)"
             bricksCol = 5
             bricksRow = 2
             bricksW = 120
@@ -207,6 +212,8 @@
         }
 
         function normalMode(){
+            canvas.style.border = "4px solid rgb(255, 248, 158)"
+            canvas.style.boxShadow = "0 0 15px rgba(251, 247, 133, 0.8)"
             bricksRow = 3
             bricksCol = 6
             bricksW = 100
@@ -246,6 +253,8 @@
         }
 
         function hardMode(){
+            canvas.style.border = "4px solid rgb(255, 163, 156)"
+            canvas.style.boxShadow = "0 0 15px rgba(240, 73, 64, 0.8)"
             bricksCol = 7
             bricksRow = 4
             bricksW = 80
@@ -254,8 +263,8 @@
             // 공의 정보
             ballX = canvas.width / 2
             ballY = canvas.height - 80
-            ballSpeedX = 5
-            ballSpeedY = -5
+            ballSpeedX = 5.5
+            ballSpeedY = -5.5
 
             // 바의 정보
             barX = canvas.width / 2 - barW / 2
@@ -317,6 +326,7 @@
             ctx.beginPath()
             gameOver = true
             cancelAnimationFrame(aniId)
+            ctx.shadowColor = "rgb(240, 73, 64)"
             ctx.fillStyle = "rgba(0, 0, 0, 0.6)"
             ctx.fillRect(0, 0, canvas.width, canvas.height)
 
@@ -334,6 +344,7 @@
 
         function winGame(){
             ctx.beginPath()
+            ctx.shadowColor = "rgb(141, 237, 100)"
             gameOver = true
             cancelAnimationFrame(aniId)
             ctx.fillStyle = "rgba(0, 0, 0, 0.6)"
